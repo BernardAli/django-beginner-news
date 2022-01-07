@@ -1,0 +1,11 @@
+{% extends 'helpers/base.html' %}
+{% block content %}
+
+<form action="" class="ui form" method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ article.title }}"?</p>
+    <a href="{% url 'article_list' %}" class="ui button">Cancel</a>
+    <button class="ui negative button" type="submit">Delete</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'helpers/base.html' %}
+{% block content %}
+
+<form action="" class="ui form" method="post">
+    {% csrf_token %}
+    {{form}}
+    <button class="ui button" type="submit">Update</button>
+</form>
+
+{% endblock %}

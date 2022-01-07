@@ -1,0 +1,28 @@
+{% extends 'helpers/base.html' %}
+{% block content %}
+
+
+    <div class="ui unstackable items">
+          <div class="item">
+            <div class="content">
+              <a class="header">{{ article.title }}</a>
+              <div class="meta">
+                <span>Description</span>
+              </div>
+              <div class="description">
+                <p>{{ article.body }}</p>
+              </div>
+              <div class="extra">
+                By: {{ article.author }}
+                  <div>
+                      <a href="{% url 'article_edit' article.id %}">Edit</a> | <a href="{% url 'article_delete' article.id %}">Delete</a>
+                  </div>
+                  <div>
+                      Back to <a href="{% url 'article_list' %}">All Articles</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+{% endblock %}

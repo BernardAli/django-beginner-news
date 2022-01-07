@@ -1,0 +1,43 @@
+{% extends 'helpers/base.html' %}
+{% block content %}
+
+
+    <div class="ui unstackable items">
+        {% for article in object_list%}
+          <div class="item">
+            <div class="content">
+              <a class="header" href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+              <div class="meta">
+                <span>Description</span>
+              </div>
+              <div class="description">
+                <p>{{ article.body }}</p>
+              </div>
+              <div class="extra">
+                By: {{ article.author }}
+                  {% if user.is_authenticated %}
+                  <div>
+                      <a href="{% url 'article_edit' article.id %}">Edit</a> | <a href="{% url 'article_delete' article.id %}">Delete</a>
+                  </div>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        <div class="ui small feed">
+              <h4 class="ui header">Comment(s)</h4>
+            {% for comment in article.comments.all %}
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                     <a>{{ comment.author }}</a>: {{ comment }}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+        {% empty %}
+            No article
+        {% endfor %}
+    </div>
+
+{% endblock %}
